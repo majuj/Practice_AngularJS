@@ -85,6 +85,16 @@
 	});
 	
 	it('closes the search result frame', function(){
+		topBanner.searchField.click();
+		topBanner.searchField.evaluate('search("angular")');
+		global.helper.waitUntilReady(topBanner.searchResult);
+		
+		expect(topBanner.searchResult.isPresent()).toBe(true);
+		expect(topBanner.searchResult.isDisplayed()).toBe(true);
+		
+		topBanner.searchClose.click();
+		
+		expect(topBanner.searchResult.isDisplayed()).toBe(false);
 		
 	});
 });
